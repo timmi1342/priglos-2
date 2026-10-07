@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="apple-touch-icon" href="./favicon.png">
+  <meta name="theme-color" content="#1e3a8a">
+  <link rel="stylesheet" href="./assets/index.css">
+  <!-- The seal is a CSS background, so the browser would only discover it
+       after parsing the 300 KB stylesheet, while the photo and the 4.7 MB
+       track already compete for bandwidth. Ask for it first. -->
+  <link rel="preload" as="image" href="./uzbek/wax-seal.webp" fetchpriority="high">
+  <title>Dilshodbek &amp; Nilufarxon — Taklifnoma</title>
+  <meta name="description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 17-oktabr kuni soat 18:00 da Sherbudin restoranida sizni kutamiz.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Taklifnoma">
+  <meta property="og:title" content="Dilshodbek &amp; Nilufarxon — Taklifnoma">
+  <meta property="og:description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 17-oktabr kuni soat 18:00 da Sherbudin restoranida sizni kutamiz.">
+  <!-- after deploy, replace with the absolute URL of the photo on your domain -->
+  <meta property="og:image" content="/uploads/photo-J7OZvZiJyEIIceZXoLnRe.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dilshodbek &amp; Nilufarxon — Taklifnoma">
+  <meta name="twitter:description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 17-oktabr kuni soat 18:00 da Sherbudin restoranida sizni kutamiz.">
+  <meta name="twitter:image" content="/uploads/photo-J7OZvZiJyEIIceZXoLnRe.png">
+  <style>
+    /* Tailwind's .flex comes after the preflight [hidden] rule and wins, so the
+       equalizer would never hide without this. */
+    [hidden] { display: none !important; }
+    /* equalizer bars for the music button (inlined by the original player) */
+    @keyframes azamatBar {
+      from { transform: scaleY(0.35); }
+      to   { transform: scaleY(1); }
+    }
+    /* Great Vibes draws a capital A that reads as "Cl"; take the initial from
+       Corinthia, the template's own font for the names, and make it larger. */
+    .anx-letter__initial {
+      font-family: var(--font-ornament);
+      font-weight: 700;
+      font-size: 1.3em;
+      line-height: 0;
+    }
+    /* The template pins this flower to the bottom of the details block, so
+       it slides under the countdown labels whenever the block gets shorter.
+       Here it closes the page in normal flow, under the countdown, at the
+       template's size: it cannot reach the text at any width. */
+    .anx-flower {
+      display: block;
+      width: clamp(134px, 37vw, 360px);
+      height: auto;
+      margin: calc(clamp(1.7rem, 7vw, 4.6rem) * -.5) auto 0;
+      pointer-events: none;
+      -webkit-user-select: none;
+      user-select: none;
+      opacity: .96;
+      filter: drop-shadow(0 6px 10px rgba(126, 35, 22, .2));
+    }
+    /* the template's bottom padding (up to 7.2rem) made room for the old,
+       overhanging flower; with the flower in flow it is just empty paper */
+    .anx-details {
+      padding-bottom: clamp(.4rem, 1.5vw, 1.2rem);
+    }
+  </style>
+</head>
+<body>
+<div id="root"><div class="anx" id="anx">
+
+  <audio id="bgm" src="./uploads/music-rpYc6FY7nzQfKPG2DN1uV.mp3" preload="auto" loop playsinline></audio>
+
+  <!-- MUSIC PLAYER -->
+  <div class="fixed bottom-20 right-4 z-[130] flex items-center gap-2 select-none">
+    <button type="button" id="bgm-btn" aria-label="Musiqani boshlash"
+      class="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-150 active:scale-90 focus:outline-none"
+      style="background: linear-gradient(135deg, rgb(194, 22, 18) 0%, rgb(215, 188, 130) 100%); box-shadow: rgba(215, 188, 130, 0.5) 0px 2px 12px;">
+      <svg id="bgm-icon-play" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 1.5L12.5 8L2 14.5V1.5Z" fill="#fff4ea"></path>
+      </svg>
+      <svg id="bgm-icon-pause" style="display:none" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="4" height="14" rx="1.5" fill="#fff4ea"></rect>
+        <rect x="9" y="1" width="4" height="14" rx="1.5" fill="#fff4ea"></rect>
+      </svg>
+    </button>
+    <div class="flex items-end gap-[3px] h-5" id="bgm-bars" aria-hidden="true" hidden>
+      <span class="w-[3px] rounded-full" style="height: 60%; background: linear-gradient(to top, rgb(194, 22, 18), rgb(215, 104, 101)); animation: 0.55s ease-in-out 0s infinite alternate none running azamatBar;"></span>
+      <span class="w-[3px] rounded-full" style="height: 100%; background: linear-gradient(to top, rgb(194, 22, 18), rgb(215, 104, 101)); animation: 0.65s ease-in-out 0.08s infinite alternate none running azamatBar;"></span>
+      <span class="w-[3px] rounded-full" style="height: 75%; background: linear-gradient(to top, rgb(194, 22, 18), rgb(215, 104, 101)); animation: 0.75s ease-in-out 0.16s infinite alternate none running azamatBar;"></span>
+      <span class="w-[3px] rounded-full" style="height: 100%; background: linear-gradient(to top, rgb(194, 22, 18), rgb(215, 104, 101)); animation: 0.85s ease-in-out 0.24s infinite alternate none running azamatBar;"></span>
+      <span class="w-[3px] rounded-full" style="height: 50%; background: linear-gradient(to top, rgb(194, 22, 18), rgb(215, 104, 101)); animation: 0.95s ease-in-out 0.32s infinite alternate none running azamatBar;"></span>
+    </div>
+  </div>
+
+  <!-- LANGUAGE SWITCH: only RU / UZ -->
+  <nav class="anx-langs" aria-label="Language">
+    <button type="button" class="anx-lang" data-lang="ru" aria-pressed="false">RU</button>
+    <button type="button" class="anx-lang is-active" data-lang="uz" aria-pressed="true">UZ</button>
+  </nav>
+
+  <!-- ENVELOPE: flaps fold away on .is-opening, fade on .is-gone, then removed -->
+  <section class="anx-intro" id="anx-intro">
+    <div class="anx-stage" role="img" aria-label="taklif qilamiz" data-i18n-aria="noteScript">
+      <div class="anx-flap anx-flap--top">
+        <p class="anx-note">
+          <span class="anx-note__top" data-i18n="noteTop">SIZNI</span>
+          <span class="anx-note__middle" data-i18n="noteMiddle">TO'YIMIZGA</span>
+          <span class="anx-note__script" data-i18n="noteScript">taklif qilamiz</span>
+        </p>
+      </div>
+      <div class="anx-flap anx-flap--left"></div>
+      <div class="anx-flap anx-flap--right"></div>
+      <div class="anx-flap anx-flap--bottom">
+        <!-- names are never translated -->
+        <p class="anx-signature"><span data-i18n="withLove">muhabbat ila,</span><strong>Dilshodbek&nbsp;<span data-i18n="amp">va</span>&nbsp;Nilufarxon</strong></p>
+      </div>
+      <button type="button" class="anx-seal" id="anx-seal" aria-expanded="false"><span data-i18n="open">ochish</span></button>
+    </div>
+  </section>
+
+  <main class="anx-sheet" id="anx-sheet" aria-hidden="true">
+
+    <!-- HERO -->
+    <section class="anx-hero">
+      <article class="anx-heritage">
+        <img class="anx-heritage__border" src="./uzbek/border-ornament.webp" alt="" aria-hidden="true">
+        <div class="anx-horns" aria-hidden="true">
+          <img class="anx-horn anx-horn--left" src="./uzbek/musicInstrument.webp" alt="">
+          <img class="anx-horn anx-horn--right" src="./uzbek/musicInstrument.webp" alt="">
+        </div>
+        <p class="anx-names" id="anx-names">
+          <span class="anx-names__line">Dilshodbek</span><span class="anx-names__amp" data-i18n="amp">va</span><span class="anx-names__line">Nilufarxon</span>
+        </p>
+        <img class="anx-couple anx-couple--photo" id="anx-couple" src="./uploads/photo-J7OZvZiJyEIIceZXoLnRe.png" alt="Dilshodbek va Nilufarxon" loading="eager">
+      </article>
+      <a class="anx-scroll" href="#anx-letter">
+        <span class="anx-scroll__text" data-i18n="scroll">Pastga tushuring</span>
+        <span class="anx-scroll__arrow" aria-hidden="true">↓</span>
+      </a>
+    </section>
+
+    <!-- LETTER -->
+    <section class="anx-letter anx-reveal" id="anx-letter" style="transition-delay: 0ms;">
+      <h1 class="anx-letter__title"><span class="anx-letter__initial" data-i18n="letterInitial">A</span><span data-i18n="letterTitle">ziz va qadrdon insonimiz!</span></h1>
+      <p class="anx-lead" style="white-space: pre-line;" data-i18n="lead">Sizni nikoh to'yimiz munosabati bilan bo'lib o'tadigan "Visol oqshomi"ga taklif etamiz.</p>
+    </section>
+
+    <div class="anx-details">
+      <div class="anx-sprigs" aria-hidden="true">
+        <img class="anx-sprig anx-sprig--tl" src="./uzbek/pomegranate.webp" alt="">
+        <img class="anx-sprig anx-sprig--mr" src="./uzbek/pomegranate.webp" alt="">
+      </div>
+
+      <!-- CALENDAR: the week of 17.10.2026 -->
+      <section class="anx-section anx-section--ruled anx-reveal" aria-label="Oktabr, 2026" data-i18n-aria="calHead" style="transition-delay: 90ms;">
+        <div class="anx-cal">
+          <div class="anx-cal__head" data-i18n="calHead">Oktabr, 2026</div>
+          <div class="anx-cal__grid">
+            <span class="anx-cal__wd" data-i18n="wd0">DU</span>
+            <span class="anx-cal__wd" data-i18n="wd1">SE</span>
+            <span class="anx-cal__wd" data-i18n="wd2">CHOR</span>
+            <span class="anx-cal__wd" data-i18n="wd3">PAY</span>
+            <span class="anx-cal__wd" data-i18n="wd4">JU</span>
+            <span class="anx-cal__wd" data-i18n="wd5">SHA</span>
+            <span class="anx-cal__wd" data-i18n="wd6">YA</span>
+          </div>
+          <div class="anx-cal__grid">
+            <span class="anx-cal__day">12</span>
+            <span class="anx-cal__day">13</span>
+            <span class="anx-cal__day">14</span>
+            <span class="anx-cal__day">15</span>
+            <span class="anx-cal__day">16</span>
+            <span class="anx-cal__day is-day"><span class="anx-cal__heart"><span>17</span></span></span>
+            <span class="anx-cal__day">18</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- VENUE -->
+      <section class="anx-section anx-reveal" aria-label="To'y manzili" data-i18n-aria="venueTitle" style="transition-delay: 180ms;">
+        <h2 class="anx-venue-title" data-i18n="venueTitle">To'y manzili</h2>
+        <p class="anx-venue">Sherbudin</p>
+        <p class="anx-address" data-i18n="address">Bahouddin Naqshband ko'chasi, Buxoro</p>
+        <p class="anx-address">18:00</p>
+        <div class="anx-maps">
+          <a class="anx-map-link" href="https://yandex.ru/maps/org/sherbudin/198231596322?si=rv7twvc2eh8g4ke2fp9bwq48rm" target="_blank" rel="noreferrer" data-i18n="yandex">Yandex xaritasi</a>
+          <a class="anx-map-link anx-map-link--solid" href="https://maps.app.goo.gl/t6YsHLS7ZiYujp7c8" target="_blank" rel="noreferrer" data-i18n="google">Google Maps</a>
+        </div>
+      </section>
+
+      <!-- COUNTDOWN -->
+      <section class="anx-section anx-section--ruled anx-reveal" aria-label="Har lahzani sanayapmiz" data-i18n-aria="countdown" style="transition-delay: 270ms;">
+        <h2 class="anx-count-title" data-i18n="countdown">Har lahzani sanayapmiz</h2>
+        <div class="anx-count" role="timer" aria-live="polite">
+          <div class="anx-count__cell"><span class="anx-count__num" data-cd="days">00</span><small class="anx-count__lbl" data-i18n="unit0">Kun</small></div>
+          <div class="anx-count__cell"><span class="anx-count__num" data-cd="hours">00</span><small class="anx-count__lbl" data-i18n="unit1">Soat</small></div>
+          <div class="anx-count__cell"><span class="anx-count__num" data-cd="mins">00</span><small class="anx-count__lbl" data-i18n="unit2">Daqiqa</small></div>
+          <div class="anx-count__cell"><span class="anx-count__num" data-cd="secs">00</span><small class="anx-count__lbl" data-i18n="unit3">Soniya</small></div>
+        </div>
+      </section>
+
+      <img class="anx-flower" src="./uzbek/flowerUzb.webp" alt="" aria-hidden="true">
+    </div>
+  </main>
+</div></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------ *
+   * 1. Texts (UZ / RU) — taken from the original "anor" template
+   * ------------------------------------------------------------------ */
+  var I18N = {
+    uz: {
+      title:       "Dilshodbek & Nilufarxon — Taklifnoma",
+      noteTop:     "SIZNI",
+      noteMiddle:  "TO'YIMIZGA",
+      noteScript:  "taklif qilamiz",
+      withLove:    "muhabbat ila,",
+      open:        "ochish",
+      amp:         "va",
+      scroll:      "Pastga tushuring",
+      letterInitial: "A",
+      letterTitle: "ziz va qadrdon insonimiz!",
+      lead:        "Sizni nikoh to'yimiz munosabati bilan bo'lib o'tadigan \"Visol oqshomi\"ga taklif etamiz.",
+      calHead:     "Oktabr, 2026",
+      wd0: "DU", wd1: "SE", wd2: "CHOR", wd3: "PAY", wd4: "JU", wd5: "SHA", wd6: "YA",
+      venueTitle:  "To'y manzili",
+      address:     "Bahouddin Naqshband ko'chasi, Buxoro",
+      yandex:      "Yandex xaritasi",
+      google:      "Google Maps",
+      countdown:   "Har lahzani sanayapmiz",
+      unit0: "Kun", unit1: "Soat", unit2: "Daqiqa", unit3: "Soniya",
+      bgmPlay:     "Musiqani boshlash",
+      bgmPause:    "Musiqani to'xtatish"
+    },
+    ru: {
+      title:       "Dilshodbek & Nilufarxon — Приглашение",
+      noteTop:     "ВЫ",
+      noteMiddle:  "ПРИГЛАШЕНЫ",
+      noteScript:  "на свадьбу",
+      withLove:    "с любовью,",
+      open:        "нажмите",
+      amp:         "и",
+      scroll:      "Прокрутите вниз",
+      letterInitial: "",   // Great Vibes' Cyrillic Д reads fine
+      letterTitle: "Дорогие наши родные и близкие!",
+      lead:        "По случаю нашего бракосочетания приглашаем Вас на торжественный свадебный вечер.",
+      calHead:     "Октябрь, 2026",
+      wd0: "ПН", wd1: "ВТ", wd2: "СР", wd3: "ЧТ", wd4: "ПТ", wd5: "СБ", wd6: "ВС",
+      venueTitle:  "Место проведения",
+      address:     "ул. Бахоуддина Накшбанда, Бухара",
+      yandex:      "Яндекс Карты",
+      google:      "Google Maps",
+      countdown:   "Считаем каждое мгновение",
+      unit0: "Дней", unit1: "Часов", unit2: "Минут", unit3: "Секунд",
+      bgmPlay:     "Включить музыку",
+      bgmPause:    "Выключить музыку"
+    }
+  };
+
+  // The original always opens in the wedding's default language (uz).
+  var lang = 'uz';
+  function t(key) { return I18N[lang][key]; }
+
+  var root    = document.getElementById('anx');
+  var intro   = document.getElementById('anx-intro');
+  var seal    = document.getElementById('anx-seal');
+  var sheet   = document.getElementById('anx-sheet');
+  var names   = document.getElementById('anx-names');
+  var couple  = document.getElementById('anx-couple');
+  var audio   = document.getElementById('bgm');
+  var btn     = document.getElementById('bgm-btn');
+  var icoPlay = document.getElementById('bgm-icon-play');
+  var icoStop = document.getElementById('bgm-icon-pause');
+  var bars    = document.getElementById('bgm-bars');
+
+  function applyLang() {
+    document.documentElement.lang = lang;
+    document.title = t('title');
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      el.textContent = t(el.dataset.i18n);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      el.setAttribute('aria-label', t(el.dataset.i18nAria));
+    });
+    couple.alt = 'Dilshodbek ' + t('amp') + ' Nilufarxon';
+    tick();
+    syncPlayer();
+    fitLayout();
+  }
+
+  document.querySelectorAll('.anx-lang').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lang = b.dataset.lang;
+      document.querySelectorAll('.anx-lang').forEach(function (x) {
+        var on = x === b;
+        x.classList.toggle('is-active', on);
+        x.setAttribute('aria-pressed', String(on));
+      });
+      applyLang();
+    });
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 2. Names: shrink each line to fit the card (--line-fit, 0.68..1)
+   * ------------------------------------------------------------------ */
+  function fitNames() {
+    var lines = names.querySelectorAll('.anx-names__line');
+    lines.forEach(function (el) { el.style.setProperty('--line-fit', '1'); });
+    var w = names.clientWidth;
+    if (!w) return;
+    var avail = Math.max(0, w - Math.max(8, w * 0.045) * 2);
+    if (!avail) return;
+    lines.forEach(function (el) {
+      var sw = el.scrollWidth;
+      if (!sw) return;
+      var fit = Math.max(0.68, Math.min(1, avail / sw * 0.985));
+      el.style.setProperty('--line-fit', fit.toFixed(3));
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 2b. Ornaments: the template pins pomegranates and karnay horns at
+   *     fixed spots, so on many widths (and in RU, with longer words) they
+   *     land on headings, the address or the names. Shrink each one, from
+   *     its outer anchor, just enough to keep CLEARANCE px between its
+   *     painted pixels and any text.
+   * ------------------------------------------------------------------ */
+  var CLEARANCE = 16, MIN_SCALE = 0.4, STEP = 0.05;
+
+  /* Opaque area of each picture: [row, firstCol, lastCol] on a coarse grid,
+     taken from the images' alpha channel (alpha > 40). Baked in because a
+     page opened from disk may not read pixels back from a canvas. */
+  var MASKS = {
+    pomegranate: { cols: 40, rows: 27, runs: [[4,20,21],[5,13,14],[5,16,17],[5,19,21],[6,14,25],[7,12,26],[8,12,27],[9,12,26],[10,12,14],[10,16,26],[11,13,27],[12,13,27],[13,12,12],[13,14,27],[14,11,27],[15,10,27],[16,9,27],[17,10,13],[17,15,26],[18,15,25],[19,15,16],[19,18,20]] },
+    horn:        { cols: 64, rows: 43, runs: [[15,56,59],[16,47,59],[17,10,11],[17,37,52],[18,9,17],[18,23,44],[19,9,34],[20,9,26],[21,9,21],[22,10,17],[23,10,14],[24,11,12]] }
+  };
+  Object.keys(MASKS).forEach(function (k) {
+    var m = MASKS[k], rows = [];
+    m.runs.forEach(function (r) { (rows[r[0]] = rows[r[0]] || []).push([r[1], r[2]]); });
+    m.byRow = rows;
+  });
+
+  /* Resting transform of each ornament, as in the template's CSS. The horns
+     are animated, so their computed transform keeps moving; the pulse only
+     swings them outwards, which makes the resting pose the closest one. */
+  var details = document.querySelector('.anx-details');
+  var ORNAMENTS = [
+    { el: document.querySelector('.anx-sprig--tl'), mask: 'pomegranate', text: details,
+      rest: function () { return new DOMMatrix(); } },
+    { el: document.querySelector('.anx-sprig--mr'), mask: 'pomegranate', text: details,
+      rest: function (w, h) { return new DOMMatrix().translate(0, -h / 2).scale(-1, 1); } },
+    { el: document.querySelector('.anx-horn--left'), mask: 'horn', text: names, pair: 'horns',
+      rest: function (w, h) { return new DOMMatrix().translate(0, -h / 2).rotate(-16).scale(-1, 1); } },
+    { el: document.querySelector('.anx-horn--right'), mask: 'horn', text: names, pair: 'horns',
+      rest: function (w, h) { return new DOMMatrix().translate(0, -h / 2).rotate(16); } }
+  ];
+
+  // Text boxes where they will sit once revealed: sections still waiting for
+  // their reveal are shifted down by their transform, so take that back out.
+  function revealShift(el) {
+    var sec = el.closest('.anx-reveal');
+    var tf = sec && getComputedStyle(sec).transform;
+    return tf && tf !== 'none' ? new DOMMatrix(tf).f : 0;
+  }
+  function textBoxes(root) {
+    var boxes = [];
+    function add(b, dy) { boxes.push({ l: b.left, r: b.right, t: b.top - dy, b: b.bottom - dy }); }
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        return n.textContent.trim() && !n.parentElement.closest('.anx-sprigs') ? 1 : 2;
+      }
+    });
+    var n, range = document.createRange();
+    while ((n = walker.nextNode())) {
+      var dy = revealShift(n.parentElement);
+      range.selectNodeContents(n);
+      Array.prototype.forEach.call(range.getClientRects(), function (b) { add(b, dy); });
+    }
+    // buttons and the heart badge carry text on a painted background
+    root.querySelectorAll('.anx-map-link, .anx-cal__heart').forEach(function (el) {
+      add(el.getBoundingClientRect(), revealShift(el));
+    });
+    return boxes;
+  }
+
+  function touchesText(o, boxes) {
+    var el = o.el, m = MASKS[o.mask];
+    var w = el.offsetWidth, h = el.offsetHeight;
+    if (!w || !h) return false;
+    var p = el.offsetParent.getBoundingClientRect();
+    var x0 = p.left + el.offsetParent.clientLeft + el.offsetLeft;
+    var y0 = p.top + el.offsetParent.clientTop + el.offsetTop;
+    var M = new DOMMatrix().translate(x0 + w / 2, y0 + h / 2)
+      .multiply(o.rest(w, h)).translate(-w / 2, -h / 2);
+    var inv = M.inverse();
+    // screen bbox of the picture, to skip far-away text quickly
+    var xs = [], ys = [];
+    [[0, 0], [w, 0], [0, h], [w, h]].forEach(function (c) {
+      var q = M.transformPoint(new DOMPoint(c[0], c[1])); xs.push(q.x); ys.push(q.y);
+    });
+    var L = Math.min.apply(0, xs) - CLEARANCE, R = Math.max.apply(0, xs) + CLEARANCE;
+    var T = Math.min.apply(0, ys) - CLEARANCE, B = Math.max.apply(0, ys) + CLEARANCE;
+    for (var i = 0; i < boxes.length; i++) {
+      var b = boxes[i];
+      if (b.r < L || b.l > R || b.b < T || b.t > B) continue;
+      for (var y = b.t - CLEARANCE; y <= b.b + CLEARANCE; y += 3) {
+        for (var x = b.l - CLEARANCE; x <= b.r + CLEARANCE; x += 3) {
+          var lx = inv.a * x + inv.c * y + inv.e, ly = inv.b * x + inv.d * y + inv.f;
+          if (lx < 0 || ly < 0 || lx >= w || ly >= h) continue;
+          var runs = m.byRow[Math.floor(ly / h * m.rows)];
+          if (!runs) continue;
+          var col = Math.floor(lx / w * m.cols);
+          for (var k = 0; k < runs.length; k++) {
+            if (col >= runs[k][0] && col <= runs[k][1]) return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  function setScale(o, s) {
+    // no room even at the smallest size: better no ornament than one on the text
+    o.el.style.visibility = s ? '' : 'hidden';
+    o.el.style.width = s ? (o.base * s).toFixed(1) + 'px' : '';
+  }
+
+  function fitOrnaments() {
+    var cache = new Map(), pairs = {};
+    ORNAMENTS.forEach(function (o) {
+      o.el.style.width = '';
+      o.el.style.visibility = '';
+      o.base = o.el.offsetWidth;
+      o.scale = 1;
+      if (!o.base) return;
+      if (!cache.has(o.text)) cache.set(o.text, textBoxes(o.text));
+      var boxes = cache.get(o.text);
+      for (o.scale = 1; o.scale >= MIN_SCALE - 1e-9; o.scale -= STEP) {
+        setScale(o, o.scale);
+        if (!touchesText(o, boxes)) break;
+      }
+      if (o.scale < MIN_SCALE - 1e-9) o.scale = 0;
+      setScale(o, o.scale);
+      if (o.pair) pairs[o.pair] = Math.min(pairs[o.pair] == null ? 1 : pairs[o.pair], o.scale);
+    });
+    // the two horns mirror each other, so both take the smaller size;
+    // shrinking only pulls a horn further out, so this stays clear
+    ORNAMENTS.forEach(function (o) {
+      if (o.pair && o.base) setScale(o, pairs[o.pair]);
+    });
+  }
+
+  function fitLayout() { fitNames(); fitOrnaments(); }
+  window.addEventListener('resize', function () { requestAnimationFrame(fitLayout); });
+  window.addEventListener('load', fitLayout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLayout);
+
+  /* ------------------------------------------------------------------ *
+   * 3. Scroll reveal
+   * ------------------------------------------------------------------ */
+  /* Rect based on purpose: IntersectionObserver silently never fires in some
+     in-app webviews (Telegram, Instagram), which would leave every section
+     stuck at opacity: 0. Same thresholds as the original observer:
+     16% of the element inside the viewport minus its bottom 8%. */
+  function reveal() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var bottom = vh * 0.92;
+    document.querySelectorAll('.anx-reveal:not(.is-visible)').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var seen = Math.min(r.bottom, bottom) - Math.max(r.top, 0);
+      if (seen > 0 && seen >= Math.min(r.height, bottom) * 0.16) el.classList.add('is-visible');
+    });
+  }
+  window.addEventListener('scroll', reveal, { passive: true });
+  window.addEventListener('resize', reveal);
+
+  /* ------------------------------------------------------------------ *
+   * 4. Envelope
+   * ------------------------------------------------------------------ */
+  /* The original mounts only after its data request, so the browser has
+     nothing to restore the scroll to. A static page gets its old position
+     back after a reload - under the envelope - and would reveal sections
+     before they are ever seen. */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  var prevOverflow = document.body.style.overflow;
+  document.body.style.overflow = 'hidden';
+  window.scrollTo(0, 0);
+
+  var opening = false;
+  function openEnvelope() {
+    if (opening) return;
+    opening = true;
+    startPlayback();
+    intro.classList.add('is-opening');          // flaps fold away, seal shrinks
+    seal.setAttribute('aria-expanded', 'true');
+    setTimeout(function () {
+      root.classList.add('anx--revealed');      // sheet fades in, horns slide in
+      intro.classList.add('is-gone');           // envelope fades out
+      sheet.setAttribute('aria-hidden', 'false');
+      window.scrollTo(0, 0);
+    }, 1000);
+    setTimeout(function () {
+      intro.parentNode.removeChild(intro);
+      document.body.style.overflow = prevOverflow;   // scrollbar may narrow the page
+      fitLayout();
+      reveal();
+    }, 1900);
+  }
+  seal.addEventListener('click', openEnvelope);
+
+  /* ------------------------------------------------------------------ *
+   * 5. Countdown — 17.10.2026 18:00, Asia/Tashkent (UTC+5)
+   * ------------------------------------------------------------------ */
+  var target = new Date('2026-10-17T18:00:00+05:00').getTime();
+  var cd = {};
+  document.querySelectorAll('[data-cd]').forEach(function (el) { cd[el.dataset.cd] = el; });
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    var s = Math.floor(Math.max(0, target - Date.now()) / 1000);
+    cd.days.textContent  = pad(Math.floor(s / 86400));
+    cd.hours.textContent = pad(Math.floor(s % 86400 / 3600));
+    cd.mins.textContent  = pad(Math.floor(s % 3600 / 60));
+    cd.secs.textContent  = pad(s % 60);
+  }
+  setInterval(tick, 1000);
+
+  /* ------------------------------------------------------------------ *
+   * 6. Music: starts with the envelope, fades in to 35% volume;
+   *    retried on the first scroll if the browser blocked autoplay.
+   * ------------------------------------------------------------------ */
+  var TARGET_VOLUME = 0.35, FADE_MS = 1800, STEP_MS = 100;
+  var fadeTimer = null, started = false, pending = false;
+
+  function fadeIn() {
+    clearInterval(fadeTimer);
+    var step = TARGET_VOLUME / Math.max(1, Math.floor(FADE_MS / STEP_MS));
+    audio.volume = 0;
+    fadeTimer = setInterval(function () {
+      var v = Math.min(TARGET_VOLUME, audio.volume + step);
+      audio.volume = v;
+      if (v >= TARGET_VOLUME) clearInterval(fadeTimer);
+    }, STEP_MS);
+  }
+  function startPlayback() {
+    if (started || pending) return;
+    pending = true;
+    audio.volume = 0;
+    var p = audio.play();
+    if (p && p.then) {
+      p.then(function () { started = true; pending = false; fadeIn(); })
+       .catch(function () { pending = false; });
+    } else {
+      started = true; pending = false; fadeIn();
+    }
+  }
+  window.addEventListener('scroll', function onFirstScroll() {
+    window.removeEventListener('scroll', onFirstScroll);
+    if (opening) startPlayback();
+  }, { passive: true });
+
+  function syncPlayer() {
+    var on = !audio.paused;
+    icoPlay.style.display = on ? 'none' : '';
+    icoStop.style.display = on ? '' : 'none';
+    bars.hidden = !on;
+    btn.setAttribute('aria-label', on ? t('bgmPause') : t('bgmPlay'));
+  }
+  btn.addEventListener('click', function () {
+    if (!audio.paused) { audio.pause(); return; }
+    if (started) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); }
+    else startPlayback();
+  });
+  ['play', 'pause', 'ended'].forEach(function (ev) { audio.addEventListener(ev, syncPlayer); });
+
+  applyLang();
+  reveal();
+})();
+</script>
+</body>
+</html>
