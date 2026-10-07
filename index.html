@@ -12,16 +12,16 @@
        track already compete for bandwidth. Ask for it first. -->
   <link rel="preload" as="image" href="./uzbek/wax-seal.webp" fetchpriority="high">
   <title>Dilshodbek &amp; Nilufarxon — Taklifnoma</title>
-  <meta name="description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 17-oktabr kuni soat 18:00 da Sherbudin restoranida sizni kutamiz.">
+  <meta name="description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 16-oktabr kuni soat 11:00 da Sherbudin restoranida sizni kutamiz.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Taklifnoma">
   <meta property="og:title" content="Dilshodbek &amp; Nilufarxon — Taklifnoma">
-  <meta property="og:description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 17-oktabr kuni soat 18:00 da Sherbudin restoranida sizni kutamiz.">
+  <meta property="og:description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 16-oktabr kuni soat 11:00 da Sherbudin restoranida sizni kutamiz.">
   <!-- after deploy, replace with the absolute URL of the photo on your domain -->
   <meta property="og:image" content="/uploads/photo-J7OZvZiJyEIIceZXoLnRe.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dilshodbek &amp; Nilufarxon — Taklifnoma">
-  <meta name="twitter:description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 17-oktabr kuni soat 18:00 da Sherbudin restoranida sizni kutamiz.">
+  <meta name="twitter:description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 16-oktabr kuni soat 11:00 da Sherbudin restoranida sizni kutamiz.">
   <meta name="twitter:image" content="/uploads/photo-J7OZvZiJyEIIceZXoLnRe.png">
   <style>
     /* Tailwind's .flex comes after the preflight [hidden] rule and wins, so the
@@ -59,6 +59,33 @@
        overhanging flower; with the flower in flow it is just empty paper */
     .anx-details {
       padding-bottom: clamp(.4rem, 1.5vw, 1.2rem);
+    }
+    /* Start time, moved up from the venue block to sit under the dates; set
+       like the venue name so the key facts read as one family. */
+    .anx-cal__time {
+      margin: clamp(.2rem, 1vw, .6rem) 0 0;
+      color: var(--ink-red);
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 4.2vw, 3.65rem);
+      font-weight: 600;
+      letter-spacing: .06em;
+      line-height: 1.08;
+    }
+    /* In the template the weekday labels keep growing with the window while
+       their 470px grid does not, so SE / CHOR / PAY run into each other on
+       wide screens (and on 320px phones). Give the week more room and stop
+       the labels before they outgrow their columns. */
+    .anx-cal__grid {
+      width: min(560px, 100%);
+    }
+    .anx-cal__wd {
+      font-size: clamp(.72rem, 3.2vw, 1.5rem);
+    }
+    /* the heart badge grew to 124px against 80px columns and touched the
+       neighbouring dates */
+    .anx-cal__heart {
+      width: clamp(46px, 10.6vw, 98px);
+      height: clamp(42px, 9.6vw, 88px);
     }
   </style>
 </head>
@@ -139,7 +166,7 @@
     <!-- LETTER -->
     <section class="anx-letter anx-reveal" id="anx-letter" style="transition-delay: 0ms;">
       <h1 class="anx-letter__title"><span class="anx-letter__initial" data-i18n="letterInitial">A</span><span data-i18n="letterTitle">ziz va qadrdon insonimiz!</span></h1>
-      <p class="anx-lead" style="white-space: pre-line;" data-i18n="lead">Sizni nikoh to'yimiz munosabati bilan bo'lib o'tadigan "Visol oqshomi"ga taklif etamiz.</p>
+      <p class="anx-lead" style="white-space: pre-line;" data-i18n="lead">Sizni nikoh to'yimiz munosabati bilan yoziladigan dasturxonimizga taklif etamiz.</p>
     </section>
 
     <div class="anx-details">
@@ -148,7 +175,7 @@
         <img class="anx-sprig anx-sprig--mr" src="./uzbek/pomegranate.webp" alt="">
       </div>
 
-      <!-- CALENDAR: the week of 17.10.2026 -->
+      <!-- CALENDAR: the week of 16.10.2026, and the start time under it -->
       <section class="anx-section anx-section--ruled anx-reveal" aria-label="Oktabr, 2026" data-i18n-aria="calHead" style="transition-delay: 90ms;">
         <div class="anx-cal">
           <div class="anx-cal__head" data-i18n="calHead">Oktabr, 2026</div>
@@ -166,10 +193,11 @@
             <span class="anx-cal__day">13</span>
             <span class="anx-cal__day">14</span>
             <span class="anx-cal__day">15</span>
-            <span class="anx-cal__day">16</span>
-            <span class="anx-cal__day is-day"><span class="anx-cal__heart"><span>17</span></span></span>
+            <span class="anx-cal__day is-day"><span class="anx-cal__heart"><span>16</span></span></span>
+            <span class="anx-cal__day">17</span>
             <span class="anx-cal__day">18</span>
           </div>
+          <p class="anx-cal__time">11:00</p>
         </div>
       </section>
 
@@ -178,7 +206,6 @@
         <h2 class="anx-venue-title" data-i18n="venueTitle">To'y manzili</h2>
         <p class="anx-venue">Sherbudin</p>
         <p class="anx-address" data-i18n="address">Bahouddin Naqshband ko'chasi, Buxoro</p>
-        <p class="anx-address">18:00</p>
         <div class="anx-maps">
           <a class="anx-map-link" href="https://yandex.ru/maps/org/sherbudin/198231596322?si=rv7twvc2eh8g4ke2fp9bwq48rm" target="_blank" rel="noreferrer" data-i18n="yandex">Yandex xaritasi</a>
           <a class="anx-map-link anx-map-link--solid" href="https://maps.app.goo.gl/t6YsHLS7ZiYujp7c8" target="_blank" rel="noreferrer" data-i18n="google">Google Maps</a>
@@ -220,7 +247,7 @@
       scroll:      "Pastga tushuring",
       letterInitial: "A",
       letterTitle: "ziz va qadrdon insonimiz!",
-      lead:        "Sizni nikoh to'yimiz munosabati bilan bo'lib o'tadigan \"Visol oqshomi\"ga taklif etamiz.",
+      lead:        "Sizni nikoh to'yimiz munosabati bilan yoziladigan dasturxonimizga taklif etamiz.",
       calHead:     "Oktabr, 2026",
       wd0: "DU", wd1: "SE", wd2: "CHOR", wd3: "PAY", wd4: "JU", wd5: "SHA", wd6: "YA",
       venueTitle:  "To'y manzili",
@@ -243,7 +270,7 @@
       scroll:      "Прокрутите вниз",
       letterInitial: "",   // Great Vibes' Cyrillic Д reads fine
       letterTitle: "Дорогие наши родные и близкие!",
-      lead:        "По случаю нашего бракосочетания приглашаем Вас на торжественный свадебный вечер.",
+      lead:        "По случаю нашего бракосочетания приглашаем Вас к нашему праздничному дастархану.",
       calHead:     "Октябрь, 2026",
       wd0: "ПН", wd1: "ВТ", wd2: "СР", wd3: "ЧТ", wd4: "ПТ", wd5: "СБ", wd6: "ВС",
       venueTitle:  "Место проведения",
@@ -509,9 +536,9 @@
   seal.addEventListener('click', openEnvelope);
 
   /* ------------------------------------------------------------------ *
-   * 5. Countdown — 17.10.2026 18:00, Asia/Tashkent (UTC+5)
+   * 5. Countdown — 16.10.2026 11:00, Asia/Tashkent (UTC+5)
    * ------------------------------------------------------------------ */
-  var target = new Date('2026-10-17T18:00:00+05:00').getTime();
+  var target = new Date('2026-10-16T11:00:00+05:00').getTime();
   var cd = {};
   document.querySelectorAll('[data-cd]').forEach(function (el) { cd[el.dataset.cd] = el; });
   function pad(n) { return String(n).padStart(2, '0'); }
