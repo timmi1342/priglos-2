@@ -62,6 +62,12 @@
     }
     /* Start time, moved up from the venue block to sit under the dates; set
        like the venue name so the key facts read as one family. */
+    /* Cormorant's default figures are old-style ("11:00" reads as "II:OO");
+       switch the countdown and the start time to its lining figures. */
+    .anx-count__num,
+    .anx-cal__time {
+      font-variant-numeric: lining-nums tabular-nums;
+    }
     .anx-cal__time {
       margin: clamp(.2rem, 1vw, .6rem) 0 0;
       color: var(--ink-red);
