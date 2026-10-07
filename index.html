@@ -11,6 +11,8 @@
        after parsing the 300 KB stylesheet, while the photo and the 4.7 MB
        track already compete for bandwidth. Ask for it first. -->
   <link rel="preload" as="image" href="./uzbek/wax-seal.webp" fetchpriority="high">
+  <!-- italic for the couple's names; the CSS bundle only loads the upright cut -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&display=swap">
   <title>Dilshodbek &amp; Nilufarxon — Taklifnoma</title>
   <meta name="description" content="Dilshodbek va Nilufarxonning to'y taklifnomasi. 2026-yil 16-oktabr kuni soat 11:00 da Sherbudin restoranida sizni kutamiz.">
   <meta property="og:type" content="website">
@@ -62,6 +64,23 @@
     }
     /* Start time, moved up from the venue block to sit under the dates; set
        like the venue name so the key facts read as one family. */
+    /* The template sets the names in Corinthia, which has no Cyrillic, so the
+       RU names fell back to a plain serif. Cormorant Garamond italic covers
+       both alphabets and belongs to the page's own type family. */
+    .anx-names {
+      font-family: "Cormorant Garamond", "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 600;
+      /* it sets wider than Corinthia: a lower cap, and on tablets / narrow
+         desktops a little more room above, keep the karnay bells off the
+         first name so the horns stay at full size */
+      font-size: clamp(3.05rem, 15.2vw, 5.2rem);
+    }
+    @media (min-width: 640px) {
+      .anx-names {
+        margin-top: calc(clamp(8.95rem, 36vw, 10.9rem) + 2rem);
+      }
+    }
     /* Cormorant's default figures are old-style ("11:00" reads as "II:OO");
        switch the countdown and the start time to its lining figures. */
     .anx-count__num,
@@ -141,8 +160,7 @@
       <div class="anx-flap anx-flap--left"></div>
       <div class="anx-flap anx-flap--right"></div>
       <div class="anx-flap anx-flap--bottom">
-        <!-- names are never translated -->
-        <p class="anx-signature"><span data-i18n="withLove">muhabbat ila,</span><strong>Dilshodbek&nbsp;<span data-i18n="amp">va</span>&nbsp;Nilufarxon</strong></p>
+        <p class="anx-signature"><span data-i18n="withLove">muhabbat ila,</span><strong><span data-i18n="groom">Dilshodbek</span>&nbsp;<span data-i18n="amp">va</span>&nbsp;<span data-i18n="bride">Nilufarxon</span></strong></p>
       </div>
       <button type="button" class="anx-seal" id="anx-seal" aria-expanded="false"><span data-i18n="open">ochish</span></button>
     </div>
@@ -159,7 +177,7 @@
           <img class="anx-horn anx-horn--right" src="./uzbek/musicInstrument.webp" alt="">
         </div>
         <p class="anx-names" id="anx-names">
-          <span class="anx-names__line">Dilshodbek</span><span class="anx-names__amp" data-i18n="amp">va</span><span class="anx-names__line">Nilufarxon</span>
+          <span class="anx-names__line" data-i18n="groom">Dilshodbek</span><span class="anx-names__amp" data-i18n="amp">va</span><span class="anx-names__line" data-i18n="bride">Nilufarxon</span>
         </p>
         <img class="anx-couple anx-couple--photo" id="anx-couple" src="./uploads/photo-J7OZvZiJyEIIceZXoLnRe.png" alt="Dilshodbek va Nilufarxon" loading="eager">
       </article>
@@ -244,6 +262,8 @@
   var I18N = {
     uz: {
       title:       "Dilshodbek & Nilufarxon — Taklifnoma",
+      groom:       "Dilshodbek",
+      bride:       "Nilufarxon",
       noteTop:     "SIZNI",
       noteMiddle:  "TO'YIMIZGA",
       noteScript:  "taklif qilamiz",
@@ -266,7 +286,9 @@
       bgmPause:    "Musiqani to'xtatish"
     },
     ru: {
-      title:       "Dilshodbek & Nilufarxon — Приглашение",
+      title:       "Дильшодбек & Нилуфархон — Приглашение",
+      groom:       "Дильшодбек",
+      bride:       "Нилуфархон",
       noteTop:     "ВЫ",
       noteMiddle:  "ПРИГЛАШЕНЫ",
       noteScript:  "на свадьбу",
@@ -315,7 +337,7 @@
     document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
       el.setAttribute('aria-label', t(el.dataset.i18nAria));
     });
-    couple.alt = 'Dilshodbek ' + t('amp') + ' Nilufarxon';
+    couple.alt = t('groom') + ' ' + t('amp') + ' ' + t('bride');
     tick();
     syncPlayer();
     fitLayout();
